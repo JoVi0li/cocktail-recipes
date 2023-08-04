@@ -1,6 +1,6 @@
 # Cocktail Recipes
 
-An SwiftUI based app build to iOS where users can search cocktail recipes by name or ingredient.
+A SwiftUI based app build to iOS where users can search cocktail recipes by name or ingredient.
 
 
 ## Features
