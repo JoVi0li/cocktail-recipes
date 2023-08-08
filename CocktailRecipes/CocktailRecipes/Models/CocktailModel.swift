@@ -8,7 +8,7 @@
 import Foundation
 
 struct Cocktail: Identifiable, Decodable {
-    let id: UUID
+    let id: String
     let name: String
     let category: String
     let prepareInstructions: String

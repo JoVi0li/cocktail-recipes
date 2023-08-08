@@ -8,10 +8,19 @@
 import SwiftUI
 
 struct CocktailListView: View {
-    @StateObject private var viewModel = CocktailListViewModel(theCocktailDBService: TheCocktailDBService())
+    @StateObject private var viewModel = CocktailListViewModel()
     
     var body: some View {
         NavigationStack {
+            TextField("Search a cocktail", text: $viewModel.searchInput)
+                .textFieldStyle(.roundedBorder)
+                .padding()
+                .onSubmit {
+                    viewModel.searchCocktailByName()
+                }
+                .autocorrectionDisabled(true)
+                
+            
             List {
                 ForEach(viewModel.cocktails) { cocktail in
                     Text(cocktail.name)
@@ -19,7 +28,6 @@ struct CocktailListView: View {
             }
             .navigationTitle(Text("Cocktail Recipes"))
         }
-        .searchable(text: $viewModel.searchInput)
     }
 }
 
