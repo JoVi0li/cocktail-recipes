@@ -18,7 +18,7 @@ class CocktailListViewModel: ObservableObject {
         var err: Error?
         guard let finalURL = URL(string: baseURL + "search.php?s=\(searchInput)") else { return }
         
-        URLSession.shared.fetchData(url: finalURL) { result in
+        URLSession.shared.fetchData(url: finalURL) { [weak self] result in
             switch result {
             case .success(let data):
                 print("Entrou no .success")
@@ -26,6 +26,7 @@ class CocktailListViewModel: ObservableObject {
                 print(data)
                 do {
                     cocktailsDictionary = try JSONDecoder().decode([String: [Cocktail]].self, from: data)
+                    self?.cocktails = cocktailsDictionary["drinks"] ?? []
                 } catch {
                     print(error)
                     err = error
