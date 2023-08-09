@@ -18,7 +18,7 @@ class CocktailListViewModel: ObservableObject {
         var err: Error?
         guard let finalURL = URL(string: baseURL + "search.php?s=\(searchInput)") else { return }
         
-        URLSession.shared.fetchData(url: finalURL) { [weak self] result in
+        URLSession.shared.fetchData(url: finalURL) { result in
             switch result {
             case .success(let data):
                 print("Entrou no .success")
