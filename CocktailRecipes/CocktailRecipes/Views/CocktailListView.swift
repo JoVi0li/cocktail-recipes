@@ -20,13 +20,17 @@ struct CocktailListView: View {
                 }
                 .autocorrectionDisabled(true)
                 
-            
-            List {
-                ForEach(viewModel.cocktails) { cocktail in
+            List(viewModel.cocktails) {cocktail in
+                NavigationLink {
+                    CocktailDetailsView(cocktail: cocktail)
+                } label: {
                     Text(cocktail.name)
+                        .padding(.vertical, 8)
                 }
+                    
             }
             .navigationTitle(Text("Cocktail Recipes"))
+            .listStyle(.automatic)
         }
     }
 }

@@ -21,9 +21,7 @@ class CocktailListViewModel: ObservableObject {
         URLSession.shared.fetchData(url: finalURL) { [weak self] result in
             switch result {
             case .success(let data):
-                print("Entrou no .success")
                 guard let data = data else { return }
-                print(data)
                 do {
                     cocktailsDictionary = try JSONDecoder().decode([String: [Cocktail]].self, from: data)
                     self?.cocktails = cocktailsDictionary["drinks"] ?? []
