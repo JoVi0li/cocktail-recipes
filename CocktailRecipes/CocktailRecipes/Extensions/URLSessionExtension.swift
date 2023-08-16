@@ -13,9 +13,7 @@ extension URLSession {
               completion(.failure(error))
             }
             
-            guard let data = data else {
-                return
-            }
+            guard let data = data else { return }
             
             completion(.success(data))
             
